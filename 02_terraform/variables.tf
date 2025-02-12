@@ -9,5 +9,5 @@ variable "instance_type" {
 variable "username" {
 }
 variable "region" {
-  
+
 }
