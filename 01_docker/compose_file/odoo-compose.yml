@@ -1,6 +1,7 @@
 services:
   web:
     image: odoo:17.0
+    container_name: web-odoo
     depends_on:
       - db
     ports:
@@ -10,11 +11,12 @@ services:
       - ./config:/etc/odoo
       - ./addons:/mnt/extra-addons
     environment:
-      - HOST=mydb
+      - HOST=db-odoo
       - USER=odoo
       - PASSWORD=myodoo
   db:
     image: postgres:15
+    container_name: db-odoo
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_PASSWORD=myodoo
