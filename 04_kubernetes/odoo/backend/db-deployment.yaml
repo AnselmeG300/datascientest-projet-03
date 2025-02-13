@@ -17,18 +17,18 @@ spec:
       labels:
         app: db-deployment
     spec:
-      volumes:
-      - name: data
-        persistentVolumeClaim:
-          claimName: db-pvc
+      # volumes:
+      # - name: data
+      #   persistentVolumeClaim:
+      #     claimName: db-pvc
       containers:
       - image: postgres:15
         name: postgres
         ports:
         - containerPort: 5432
-        volumeMounts:
-        - name: data
-          mountPath: /var/lib/postgresql/data/pgdata
+        # volumeMounts:
+        # - name: data
+        #   mountPath: /var/lib/postgresql/data/pgdata
         env:
         - name: POSTGRES_DB
           valueFrom:
