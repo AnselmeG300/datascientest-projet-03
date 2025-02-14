@@ -1,5 +1,5 @@
-key_name            = "jenkins"
-security_group_name = "jenkins"
+key_name            = "datascientest"
+security_group_name = "datascientest_sg"
 sg_ports            = [22, 8080, 8069, 80, 30080, 30069, 30081, 6443]
 instance_type       = "t2.medium"
 username            = "ubuntu"
