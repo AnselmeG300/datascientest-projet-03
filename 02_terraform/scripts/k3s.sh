@@ -1,6 +1,10 @@
 #!/bin/bash 
 
 #Install K3s env
-curl -sfL https://get.k3s.io | sh -
+export host_ip=$(curl -s ifconfig.io)
 
- curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC=" --tls-san=44.223.51.92" sh -
+sudo apt update -y
+sudo apt install curl -y
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC=" --tls-san=$host_ip" sh -
+sudo chmod 644 /etc/rancher/k3s/k3s.yaml
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
