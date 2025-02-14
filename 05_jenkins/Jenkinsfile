@@ -96,7 +96,7 @@ pipeline {
                 }
             }
         }
-        stage('Delete Instance'){
+        stage('Delete Instance ec2'){
             steps{
                 input message: "Voulez vous supprimer L'instance Docker EC2 ?", ok: 'Yes'
             }
@@ -186,7 +186,7 @@ pipeline {
                 }
             }
         }
-        stage('Delete Instance'){
+        stage('Delete Instance kubernetes'){
             steps{
                 input message: "Voulez vous supprimer L'instance Kubernetes EC2 ?", ok: 'Yes'
             }
