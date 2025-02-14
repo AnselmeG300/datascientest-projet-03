@@ -60,7 +60,7 @@ pipeline {
             }
             agent {
                 docker {
-                    image 'datascientest/jnlp-agent-terraform'
+                    image 'jenkins/jnlp-agent-terraform'
                 }
             }
             steps{
@@ -108,7 +108,7 @@ pipeline {
             }
             agent {
                 docker {
-                    image 'datascientest/jnlp-agent-terraform'
+                    image 'jenkins/jnlp-agent-terraform'
                 }
             }
             steps{
@@ -133,7 +133,7 @@ pipeline {
             }
             agent {
                 docker {
-                    image 'datascientest/jnlp-agent-terraform'
+                    image 'jenkins/jnlp-agent-terraform'
                 }
             }
             steps{
@@ -200,7 +200,7 @@ pipeline {
             }
             agent {
                 docker {
-                    image 'datascientest/jnlp-agent-terraform'
+                    image 'jenkins/jnlp-agent-terraform'
                 }
             }
             steps{
