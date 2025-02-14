@@ -88,6 +88,7 @@ pipeline {
                 script{
                     sh '''
                         cd 03_ansible/
+                        cat host_vars/machine-1.yaml
                         ansible machine-1 -m ping --private-key ../02_terraform/keypair/projet03.pem
                         sleep 5
                         ansible-playbook playbooks/docker.yaml --private-key ../02_terraform/keypair/projet03.pem
