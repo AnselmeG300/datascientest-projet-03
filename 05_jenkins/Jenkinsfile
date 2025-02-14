@@ -78,24 +78,24 @@ pipeline {
                 }
             }
         }
-        stage('Ansible deploy on Docker EC2'){
-            agent {
-                docker {
-                    image 'registry.gitlab.com/robconnolly/docker-ansible:latest'
-                }
-            }
-            steps{
-                script{
-                    sh '''
-                        cd 03_ansible/
-                        cat host_vars/machine-1.yaml
-                        ansible machine-1 -m ping --private-key ../02_terraform/keypair/projet03.pem
-                        sleep 5
-                        ansible-playbook playbooks/docker.yaml --private-key ../02_terraform/keypair/projet03.pem --tags start
-                    '''
-                }
-            }
-        }
+        // stage('Ansible deploy on Docker EC2'){
+        //     agent {
+        //         docker {
+        //             image 'registry.gitlab.com/robconnolly/docker-ansible:latest'
+        //         }
+        //     }
+        //     steps{
+        //         script{
+        //             sh '''
+        //                 cd 03_ansible/
+        //                 cat host_vars/machine-1.yaml
+        //                 ansible machine-1 -m ping --private-key ../02_terraform/keypair/projet03.pem
+        //                 sleep 5
+        //                 ansible-playbook playbooks/docker.yaml --private-key ../02_terraform/keypair/projet03.pem --tags start
+        //             '''
+        //         }
+        //     }
+        // }
         stage('Delete Instance ec2'){
             steps{
                 input message: "Voulez vous supprimer L'instance Docker EC2 ?", ok: 'Yes'
