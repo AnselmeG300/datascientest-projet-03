@@ -78,22 +78,31 @@ pipeline {
                 }
             }
         }
-        // stage(''){
-        //     steps{
-        //         script{
-        //             sh'''
-        //             '''
-        //         }
-        //     }
-        // }
-        // stage(''){
-        //     steps{
-        //         script{
-        //             sh'''
-        //             '''
-        //         }
-        //     }
-        // }
+        stage('Ansible deploy on Docker EC2'){
+            agent {
+                docker {
+                    image 'registry.gitlab.com/robconnolly/docker-ansible:latest'
+                }
+            }
+            steps{
+                script{
+                    sh '''
+                        cd 03_ansible/
+                        ansible machine-1 -m ping --private-key ../02_terraform/keypair/projet03.pem
+                        sleep 5
+                        ansible-playbook playbooks/docker.yaml --private-key ../02_terraform/keypair/projet03.pem
+                    '''
+                }
+            }
+        }
+        stage(''){
+            steps{
+                script{
+                    sh'''
+                    '''
+                }
+            }
+        }
         
     }
 }
