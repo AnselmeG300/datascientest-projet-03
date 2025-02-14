@@ -10,7 +10,7 @@
         flat: yes
     - name: update k3s file 
       local_action:
-        module: lineinline
+        module: lineinfile
         path: ./k3s.yaml
         regexp: '    server: https://127.0.0.1:6443'
         line: '    server: https://{{ ansible_host }}:6443'
