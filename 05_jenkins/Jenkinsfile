@@ -181,9 +181,8 @@ pipeline {
                     sh '''
                         HOST_IP=$(grep 'ansible_host:' 03_ansible/host_vars/machine-1.yaml | awk '{print $2}')
                         sed -i "s|HOST|$HOST_IP|g" 04_kubernetes/icwebapp/icwebapp-configmaps.yaml
-                        cat 04_kubernetes/icwebapp/icwebapp-configmaps.yaml
-                        pwd
-                        kubectl --kubeconfig=03_ansible/playbooks/k3s.yaml apply -k 04_kubernetes --validate=false
+                        cat 03_ansible/playbooks/k3s.yaml
+                        kubectl --kubeconfig=03_ansible/playbooks/k3s.yaml apply -k 04_kubernetes/ --validate=false
                     '''
                 }
             }
